@@ -2,8 +2,8 @@ import pandas as pd
 
 # Create a simple dataset
 data = {
-    'Temperature': [28, 32, 25, 20, 22, 30, 35, 18, 28, 30],
-    'Play': [1, 1, 0, 0, 0, 1, 1, 0, 1, 1]
+    'Temperature': [28, 32, 25, 20, 22, 30, 35, 18, 28, 30, 100, 55, 150, 0, 10, -2, -5],
+    'Play': [1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
 }
 
 df = pd.DataFrame(data)
