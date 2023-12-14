@@ -22,8 +22,8 @@ nltk.download('stopwords')
 # database of English words and their semantic relationship
 nltk.download('wordnet')
 
-
 model = load_model('trained_nlp_model.h5')
+
 
 # Convert text to lowercase
 def convert_to_lower_case(text):
@@ -92,13 +92,9 @@ def token_sequence(news_text):
 def fake_no_fake(prompt):
     preprocessed_text = preprocess_text(str(prompt))
     padded_data = token_sequence(preprocessed_text)
-    print(padded_data)
 
     pred = model.predict(padded_data)
-    print(pred)
     binary_pred = (pred > 0.005).astype(int)
-    print(binary_pred[0])
     class_label = "fake" if binary_pred[0] == 1 else "not fake"
     print("Predicted Class Label:", class_label)
-
-fake_no_fake()
+    return class_label
