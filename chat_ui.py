@@ -1,7 +1,7 @@
 import streamlit as st
-from predict_play import play_no_play
+from predict_news import fake_no_fake
 
-st.title("Tennis Bot")
+st.title("Fake news bot")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -13,15 +13,12 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # React to user input
-if prompt := st.chat_input("Enter the temperature"):
+if prompt := st.chat_input("Enter the news you want to classify"):
     # Display user message in chat message container
     st.chat_message("user").markdown(prompt)
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
-    try:
-        response = f"Echo: You should {play_no_play(int(prompt))} in {prompt} temperature"
-    except ValueError:
-        raise Exception(f"Please enter numerical values only, {prompt} given instead.")
+    response = f"Echo: The given news article seems to be {fake_no_fake(prompt)}."
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(response)
